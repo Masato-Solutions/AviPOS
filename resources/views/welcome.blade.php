@@ -1,5 +1,5 @@
-@extends( 'layout.base' )
 
+@extends( 'layout.base' )
 @section( 'layout.base.body' )
     <div id="page-container" class="h-full w-full flex">
         <div class="container flex-auto flex-col items-center justify-center flex m-4 sm:mx-auto">
