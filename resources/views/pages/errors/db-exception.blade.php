@@ -14,13 +14,13 @@
                 </div>
                 <ul class="flex flex-col">
                     <li class="flex">
-                        <a target="_blank" href="https://my.nexopos.com/en/documentation/how-tos/how-to-change-database-configuration" class="border-t w-full border-gray-300 text-gray-600 text-sm p-2">
+                        <a target="_blank" href="https://pos.avrinalanka.com/en/documentation/how-tos/how-to-change-database-configuration" class="border-t w-full border-gray-300 text-gray-600 text-sm p-2">
                             <i class="las la-hand-point-right"></i>
                             <span class="ml-2">{{ __( 'How to change database configuration' ) }}</span>
                         </a>
                     </li>
                     <li class="flex">
-                        <a target="_blank" href="https://my.nexopos.com/en/documentation/troubleshooting/common-database-issues" class="border-t w-full border-gray-300 text-gray-600 text-sm p-2">
+                        <a target="_blank" href="https://pos.avrinalanka.com/en/documentation/troubleshooting/common-database-issues" class="border-t w-full border-gray-300 text-gray-600 text-sm p-2">
                             <i class="las la-hand-point-right"></i>
                             <span class="ml-2">{{ __( 'Common Database Issues' ) }}</span>
                         </a>

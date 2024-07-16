@@ -123,7 +123,7 @@ if ( Auth::check() ) {
                 </div>
                 <div class="p-2 text-xs flex justify-end text-gray-500">
                     {!!
-                        Hook::filter( 'ns-footer-signature', sprintf( __( 'You\'re using <a tager="_blank" href="%s" class="hover:text-blue-400 mx-1 inline-block">AviPOS %s</a>' ), 'https://my.nexopos.com/en', config( 'nexopos.version' ) ) )
+                        Hook::filter( 'ns-footer-signature', sprintf( __( 'You\'re using <a tager="_blank" href="%s" class="hover:text-blue-400 mx-1 inline-block">AviPOS %s</a>' ), 'https://pos.avrinalanka.com/en', config( 'nexopos.version' ) ) )
                     !!}
                 </div>
             </div>

@@ -9,7 +9,7 @@
                 <div class="p-4 md:w-2/3">
                     <p class="text-center ">{{ __( 'No payment type has been selected on the settings. Please check your POS features and choose the supported order type' ) }}</p>
                     <div class="flex justify-center py-1">
-                        <ns-link target="_blank" type="info" href="https://my.nexopos.com/en/documentation/components/order-types">{{ __( 'Read More' ) }}</ns-link>
+                        <ns-link target="_blank" type="info" href="https://pos.avrinalanka.com/en/documentation/components/order-types">{{ __( 'Read More' ) }}</ns-link>
                     </div>
                 </div>
             </div>

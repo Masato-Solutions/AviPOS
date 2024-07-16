@@ -26,7 +26,7 @@ BeforeStartWebRouteEvent::dispatch();
 /**
  * By default, wildcard is disabled
  * on the system. In order to enable it, the user
- * will have to follow these instructions https://my.nexopos.com/en/documentation/wildcards
+ * will have to follow these instructions https://pos.avrinalanka.com/en/documentation/wildcards
  */
 if ( env( 'NS_WILDCARD_ENABLED' ) ) {
     /**

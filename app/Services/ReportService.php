@@ -204,7 +204,7 @@ class ReportService
             $notification->create([
                 'title' => __( 'Untracked Stock Operation' ),
                 'description' => $message,
-                'url' => 'https://my.nexopos.com/en/troubleshooting/untracked-stock-operation',
+                'url' => 'https://pos.avrinalanka.com/en/troubleshooting/untracked-stock-operation',
             ])->dispatchForGroup( Role::namespace( 'admin' ) );
 
             return [
@@ -515,7 +515,7 @@ class ReportService
         $notification->create([
             'title' => __( 'Untracked Stock Operation' ),
             'description' => $message,
-            'url' => 'https://my.nexopos.com/en/troubleshooting/untracked-stock-operation',
+            'url' => 'https://pos.avrinalanka.com/en/troubleshooting/untracked-stock-operation',
         ])->dispatchForGroup( Role::namespace( 'admin' ) );
 
         return [

@@ -19,16 +19,16 @@ Read Review On:
 [![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/blair2004/AviPOS-4x/tree/v4.7.x&refcode=ebdb80cb0ec7)
 
 ## Documentation
-All the documentation for AviPOS 4.x can be found on [My AviPOS](https://my.nexopos.com/en/documentation). That includes : 
+All the documentation for AviPOS 4.x can be found on [My AviPOS](https://pos.avrinalanka.com/en/documentation). That includes : 
 
-- [Configuring the environment](https://my.nexopos.com/en/documentation/getting-started/configuring-the-environment)
-- [Downloading AviPOS](https://my.nexopos.com/en/documentation/getting-started/download-and-install)
-- [Installing AviPOS](https://my.nexopos.com/en/documentation/getting-started/installation-wizard)
+- [Configuring the environment](https://pos.avrinalanka.com/en/documentation/getting-started/configuring-the-environment)
+- [Downloading AviPOS](https://pos.avrinalanka.com/en/documentation/getting-started/download-and-install)
+- [Installing AviPOS](https://pos.avrinalanka.com/en/documentation/getting-started/installation-wizard)
 
 And for developpers, there are more technical tutorials that convers:
-- [Creating a module](https://my.nexopos.com/en/documentation/developpers-guides/how-to-create-a-module-for-nexopos-4-x)
-- [Create a menu for a module](https://my.nexopos.com/en/documentation/developpers-guides/how-to-create-a-menu-on-nexopos-4-x)
-- [Create a route](https://my.nexopos.com/en/documentation/developpers-guides/how-to-register-routes-for-modules)
+- [Creating a module](https://pos.avrinalanka.com/en/documentation/developpers-guides/how-to-create-a-module-for-nexopos-4-x)
+- [Create a menu for a module](https://pos.avrinalanka.com/en/documentation/developpers-guides/how-to-create-a-menu-on-nexopos-4-x)
+- [Create a route](https://pos.avrinalanka.com/en/documentation/developpers-guides/how-to-register-routes-for-modules)
 
 We've also create video tutorial that will help you performing those easilly.
 
@@ -39,7 +39,7 @@ We've also create video tutorial that will help you performing those easilly.
 # Get More Using Modules
 AviPOS 4x available on [CodeCanyon](https://codecanyon.net/item/nexopos-4x-pos-crm-inventory-manager/31188619) gives access to premium modules marketplace. While purchasing on CodeCanyon, you get : 
 
-- $40 In credit to [My AviPOS](https://my.nexopos.com/en/marketplace) balance.
+- $40 In credit to [My AviPOS](https://pos.avrinalanka.com/en/marketplace) balance.
 - Access to AviPOS 4.x marketplace
 - Premium Support & Installation Service
 - You're eligible for customization
@@ -52,13 +52,13 @@ We're frequently discussing about the future of the app (while waiting discussio
 
 1 - The support on AviPOS 4.x only applies to the information provided by the users while creating an issue. This means we won't either do the installation on your server or check an issue on your server. You're therefore invited not to post your server information while creating an issue. We'll use your explanations to reproduce your issue and therefore to solve it.
 
-2 - If you would like to have a dedicated support. Consider registering as a member to [My AviPOS platform](https://my.nexopos.com/en/account/checkout/premium).
+2 - If you would like to have a dedicated support. Consider registering as a member to [My AviPOS platform](https://pos.avrinalanka.com/en/account/checkout/premium).
 
 ## Troubleshooting
 Here we list the knowns issues and the way around. Not everyone is likely to face these issues as it depends on the used enviroment.
 
 - CSRF error After Installation
-Chances are when you make your installation, you'll have your website URL changed. Unfortunately, if the domain has to change, it must be clearly described on the .env file. We've written a guide that explains how to solve the [CSRF issue on AviPOS 4.x](https://my.nexopos.com/en/documentation/troubleshooting/how-to-fix-csrf-token-mismatch-on-nexopos-4-x).
+Chances are when you make your installation, you'll have your website URL changed. Unfortunately, if the domain has to change, it must be clearly described on the .env file. We've written a guide that explains how to solve the [CSRF issue on AviPOS 4.x](https://pos.avrinalanka.com/en/documentation/troubleshooting/how-to-fix-csrf-token-mismatch-on-nexopos-4-x).
 
 - Error After Database Details (using `php artisan serve`)
 If you're serving the project using `php artisan serve`, after setting up the database credentails and having them validated, you migth stop on an infinite
