@@ -1057,6 +1057,9 @@ class OrdersService
             ->additionateBy(
                 ( $order->tax_type === 'exclusive' ? $order->tax_value : 0 )
             )
+			->additionateBy(
+				$order->service_charge
+			)
             ->subtractBy(
                 Currency::fresh( $order->total_coupons )
                     ->additionateBy( $order->discount )
@@ -1576,6 +1579,7 @@ class OrdersService
         $order->author = $fields[ 'author' ] ?? Auth::id(); // the author can now be changed
         $order->title = $fields[ 'title' ] ?? null;
         $order->tax_value = $this->currencyService->define( $fields[ 'tax_value' ] ?? 0 )->toFloat();
+		$order->service_charge = $this->currencyService->define( $fields[ 'service_charge' ] ?? 0 )->toFloat();
         $order->products_tax_value = $this->currencyService->define( $fields[ 'products_tax_value' ] ?? 0 )->toFloat();
         $order->total_tax_value = $this->currencyService->define( $fields[ 'total_tax_value' ] ?? 0 )->toFloat();
         $order->code = $order->code ?: ''; // to avoid generating a new code
@@ -2456,6 +2460,24 @@ class OrdersService
             'delivery' => [
                 'identifier' => 'delivery',
                 'label' => __( 'Delivery' ),
+                'icon' => '/images/delivery.png',
+                'selected' => false,
+            ],
+            'dine-in' => [
+                'identifier' => 'dine-in',
+                'label' => __( 'Dine In' ),
+                'icon' => '/images/delivery.png',
+                'selected' => false,
+            ],
+            'pickmefood' => [
+                'identifier' => 'pickmefood',
+                'label' => __( 'Pick Me Food' ),
+                'icon' => '/images/delivery.png',
+                'selected' => false,
+            ],
+            'ubereats' => [
+                'identifier' => 'ubereats',
+                'label' => __( 'Uber Eats' ),
                 'icon' => '/images/delivery.png',
                 'selected' => false,
             ],

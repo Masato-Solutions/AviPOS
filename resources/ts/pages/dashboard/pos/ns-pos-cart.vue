@@ -134,6 +134,16 @@
                             </td>
                             <td width="200" class="border p-2 text-right">{{ nsCurrency( summarizeCoupons() ) }}</td>
                         </tr>
+                        <tr v-if="order.type && order.type.identifier === 'dine-in'">
+                            <td width="200" class="border p-2"></td>
+                            <td width="200" class="border p-2">
+                                <a class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Service Charge' ) }}</a>
+                            </td>
+                            <td width="200" class="border p-2 text-right">{{ nsCurrency( serviceCharge(true) ) }}</td>
+						</tr>
+						<tr v-else class="hide" style="display:none;">
+							{{ nsCurrency( serviceCharge(false) ) }}
+                        </tr>
                         <tr>
                             <td width="200" class="border p-2">
                                 <a @click="openOrderType()" class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Type' ) }}: {{ selectedType }}</a>
@@ -426,15 +436,29 @@ export default {
             })
         },
 
-        summarizeCoupons() {
-            const coupons   =   this.order.coupons.map( coupon => coupon.value );
+		summarizeCoupons() {
+			const coupons   =   this.order.coupons.map( coupon => coupon.value );
 
-            if ( coupons.length > 0 ) {
-                return coupons.reduce( ( before, after ) => before + after );
-            }
+			if ( coupons.length > 0 ) {
+				return coupons.reduce( ( before, after ) => before + after );
+			}
 
-            return 0;
-        },
+			return 0;
+		},
+
+		serviceCharge(calculate) {
+			var service_charge = 0;
+			if(calculate){
+				service_charge = this.order.subtotal * 0.1;
+				this.order.service_charge = service_charge;
+				//refresh cart
+				this.order.total = this.order.subtotal + this.order.total_tax_value + this.order.service_charge - this.order.discount;
+			}else{
+				this.order.service_charge = service_charge;
+				this.order.total = this.order.subtotal + this.order.total_tax_value + this.order.service_charge - this.order.discount;
+			}
+			return this.order.service_charge;
+		},
 
         async changeProductPrice( product ) {
             if ( ! this.settings.edit_purchase_price ) {

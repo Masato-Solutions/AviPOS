@@ -81,6 +81,7 @@ export class POS {
             register_id: this.get('register') ? this.get('register').id : undefined, // everytime it reset, this value will be pulled.
             discount_percentage: 0,
             subtotal: 0,
+			service_charge: 0,
             total: 0,
             coupons: [],
             total_coupons: 0,
@@ -1406,6 +1407,11 @@ export class POS {
             const op1 = math.chain( order.subtotal ).add( order.shipping || 0 ).done();
             order.total     =   math.chain( op1 ).subtract( order.discount ).subtract( order.total_coupons ).done();
         }
+
+		//add service_charge to total
+		if(order.service_charge > 0){
+			order.total += order.service_charge;
+		}
 
         this.order.next(order);
 

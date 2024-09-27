@@ -117,6 +117,7 @@ class Order extends NsModel
         'total_with_tax' => FloatConvertCasting::class,
         'total_coupons' => FloatConvertCasting::class,
         'total' => FloatConvertCasting::class,
+		'service_charge' => FloatConvertCasting::class,
         'tax_value' => FloatConvertCasting::class,
         'products_tax_value' => FloatConvertCasting::class,
         'total_tax_value' => FloatConvertCasting::class,

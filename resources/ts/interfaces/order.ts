@@ -74,5 +74,6 @@ export interface Order {
     shipping_rate: number;
     shipping_type: 'flat' | 'percentage';
     subtotal: number;
+    service_charge: number;
     title: string;
 }
