@@ -157,7 +157,7 @@
                                 <a @click="openDiscountPopup( order, 'cart' )" class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ nsCurrency( order.discount ) }}</a>
                             </td>
                         </tr>
-                        <tr v-if="order.type && order.type.identifier === 'delivery'">
+                        <tr v-if="order.type && (order.type.identifier === 'delivery' || order.type.identifier === 'ubereats' || order.type.identifier === 'pickmefoods')">
                             <td width="200" class="border p-2"></td>
                             <td width="200" class="border p-2">
                                 <a @click="openShippingPopup()" class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Shipping' ) }}</a>
@@ -213,7 +213,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr v-if="order.type && order.type.identifier === 'delivery'">
+                        <tr v-if="order.type">
                             <td width="200" class="border p-2"></td>
                             <td width="200" class="border p-2">
                                 <a @click="openShippingPopup()" class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Shipping' ) }}</a>

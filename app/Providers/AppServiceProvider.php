@@ -317,19 +317,19 @@ class AppServiceProvider extends ServiceProvider
             'dine-in' => [
                 'identifier' => 'dine-in',
                 'label' => __( 'Dine In' ),
-                'icon' => '/images/delivery.png',
+                'icon' => '/images/dine-in.png',
                 'selected' => false,
             ],
             'pickmefood' => [
                 'identifier' => 'pickmefood',
                 'label' => __( 'Pick Me Food' ),
-                'icon' => '/images/delivery.png',
+                'icon' => '/images/pickmefoods.png',
                 'selected' => false,
             ],
             'ubereats' => [
                 'identifier' => 'ubereats',
                 'label' => __( 'Uber Eats' ),
-                'icon' => '/images/delivery.png',
+                'icon' => '/images/ubereats.png',
                 'selected' => false,
             ],
         ] )] );
