@@ -134,16 +134,6 @@
                             </td>
                             <td width="200" class="border p-2 text-right">{{ nsCurrency( summarizeCoupons() ) }}</td>
                         </tr>
-                        <tr v-if="order.type && order.type.identifier === 'dine-in'">
-                            <td width="200" class="border p-2"></td>
-                            <td width="200" class="border p-2">
-                                <a class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Service Charge' ) }}</a>
-                            </td>
-                            <td width="200" class="border p-2 text-right">{{ nsCurrency( serviceCharge(true) ) }}</td>
-						</tr>
-						<tr v-else class="hide" style="display:none;">
-							{{ nsCurrency( serviceCharge(false) ) }}
-                        </tr>
                         <tr>
                             <td width="200" class="border p-2">
                                 <a @click="openOrderType()" class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Type' ) }}: {{ selectedType }}</a>
@@ -156,6 +146,16 @@
                             <td width="200" class="border p-2 text-right">
                                 <a @click="openDiscountPopup( order, 'cart' )" class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ nsCurrency( order.discount ) }}</a>
                             </td>
+                        </tr>
+                        <tr v-if="order.type && order.type.identifier === 'dine-in'">
+                            <td width="200" class="border p-2"></td>
+                            <td width="200" class="border p-2">
+                                <a class="cursor-pointer outline-none border-dashed py-1 border-b border-info-primary text-sm">{{ __( 'Service Charge' ) }}</a>
+                            </td>
+                            <td width="200" class="border p-2 text-right">{{ nsCurrency( serviceCharge(true) ) }}</td>
+						</tr>
+						<tr v-else class="hide" style="display:none;">
+							{{ nsCurrency( serviceCharge(false) ) }}
                         </tr>
                         <tr v-if="order.type && (order.type.identifier === 'delivery' || order.type.identifier === 'ubereats' || order.type.identifier === 'pickmefoods')">
                             <td width="200" class="border p-2"></td>

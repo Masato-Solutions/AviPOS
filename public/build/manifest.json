@@ -116,6 +116,19 @@
       "_ns-orders-preview-popup-61vyTMjU.js"
     ]
   },
+  "_ns-pos-shipping-popup-B-hD6sIQ.js": {
+    "file": "assets/ns-pos-shipping-popup-B-hD6sIQ.js",
+    "name": "ns-pos-shipping-popup",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/ts/bootstrap.ts",
+      "_currency-Dtag6qPd.js",
+      "_ns-prompt-popup-BYHG4gKg.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "_runtime-core.esm-bundler-DWZrwskR.js",
+      "_ns-orders-preview-popup-Cg-lv3LK.js"
+    ]
+  },
   "_ns-procurement-quantity-sb_6HYV2.js": {
     "file": "assets/ns-procurement-quantity-sb_6HYV2.js",
     "name": "ns-procurement-quantity",
@@ -609,7 +622,7 @@
     ]
   },
   "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-customers-button.vue": {
-    "file": "assets/ns-pos-customers-button-D6km6iaM.js",
+    "file": "assets/ns-pos-customers-button-BfUC4I5b.js",
     "name": "ns-pos-customers-button",
     "src": "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-customers-button.vue",
     "isDynamicEntry": true,
@@ -622,7 +635,7 @@
       "_chart-Cjxr_vbl.js"
     ],
     "dynamicImports": [
-      "_ns-pos-order-type-popup-CLqB9niD.js"
+      "_ns-pos-shipping-popup-B-hD6sIQ.js"
     ]
   },
   "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-dashboard-button.vue": {
@@ -637,13 +650,13 @@
     ]
   },
   "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-order-type-button.vue": {
-    "file": "assets/ns-pos-order-type-button-B7eyae1z.js",
+    "file": "assets/ns-pos-order-type-button-B1g52SYG.js",
     "name": "ns-pos-order-type-button",
     "src": "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-order-type-button.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/bootstrap.ts",
-      "_ns-pos-order-type-popup-CLqB9niD.js",
+      "_ns-pos-shipping-popup-B-hD6sIQ.js",
       "_currency-Dtag6qPd.js",
       "__plugin-vue_export-helper-DlAUqK2U.js",
       "_runtime-core.esm-bundler-DWZrwskR.js",
@@ -696,7 +709,7 @@
     ]
   },
   "resources/ts/pages/dashboard/pos/ns-pos-cart.vue": {
-    "file": "assets/ns-pos-cart-BnxX_k4q.js",
+    "file": "assets/ns-pos-cart-BzvCvU4I.js",
     "name": "ns-pos-cart",
     "src": "resources/ts/pages/dashboard/pos/ns-pos-cart.vue",
     "isDynamicEntry": true,
@@ -704,11 +717,10 @@
       "resources/ts/bootstrap.ts",
       "_currency-Dtag6qPd.js",
       "_pos-section-switch-DmfccXVX.js",
-      "_ns-pos-order-type-popup-CLqB9niD.js",
+      "_ns-pos-shipping-popup-B-hD6sIQ.js",
       "__plugin-vue_export-helper-DlAUqK2U.js",
       "_runtime-core.esm-bundler-DWZrwskR.js",
       "_ns-prompt-popup-BYHG4gKg.js",
-      "resources/ts/popups/ns-pos-shipping-popup.vue",
       "_index.es-CL3uzDSn.js",
       "_chart-Cjxr_vbl.js",
       "_ns-orders-preview-popup-Cg-lv3LK.js"
@@ -730,7 +742,7 @@
     ]
   },
   "resources/ts/pages/dashboard/pos/ns-pos.vue": {
-    "file": "assets/ns-pos-DbNhgEVi.js",
+    "file": "assets/ns-pos-BYeyYyeC.js",
     "name": "ns-pos",
     "src": "resources/ts/pages/dashboard/pos/ns-pos.vue",
     "isDynamicEntry": true,
@@ -743,11 +755,10 @@
       "_currency-Dtag6qPd.js",
       "_chart-Cjxr_vbl.js",
       "_pos-section-switch-DmfccXVX.js",
-      "_ns-pos-order-type-popup-CLqB9niD.js",
+      "_ns-pos-shipping-popup-B-hD6sIQ.js",
       "_ns-prompt-popup-BYHG4gKg.js",
       "_ns-orders-preview-popup-Cg-lv3LK.js",
-      "_index.es-CL3uzDSn.js",
-      "resources/ts/popups/ns-pos-shipping-popup.vue"
+      "_index.es-CL3uzDSn.js"
     ]
   },
   "resources/ts/pages/dashboard/procurements/manage-products.vue": {
@@ -1124,13 +1135,13 @@
     ]
   },
   "resources/ts/pos-init.ts": {
-    "file": "assets/pos-init-C6O8j8vo.js",
+    "file": "assets/pos-init-gteMAB4l.js",
     "name": "pos-init",
     "src": "resources/ts/pos-init.ts",
     "isEntry": true,
     "imports": [
       "_preload-helper-C1FmrZbK.js",
-      "_ns-pos-order-type-popup-CLqB9niD.js",
+      "_ns-pos-shipping-popup-B-hD6sIQ.js",
       "resources/ts/bootstrap.ts",
       "_currency-Dtag6qPd.js",
       "__plugin-vue_export-helper-DlAUqK2U.js",
@@ -1148,11 +1159,11 @@
       "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-reset-button.vue",
       "resources/ts/pages/dashboard/pos/header-buttons/ns-pos-registers-button.vue",
       "resources/ts/popups/ns-pos-layaway-popup.vue",
-      "resources/ts/popups/ns-pos-shipping-popup.vue"
+      "_ns-pos-shipping-popup-B-hD6sIQ.js"
     ]
   },
   "resources/ts/pos.ts": {
-    "file": "assets/pos-BquTtVAr.js",
+    "file": "assets/pos-CLN25NMy.js",
     "name": "pos",
     "src": "resources/ts/pos.ts",
     "isEntry": true,

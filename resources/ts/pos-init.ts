@@ -26,6 +26,7 @@ import Tax from "./libraries/tax";
 import * as math from "mathjs"
 import nsPosLoadingPopupVue from "./popups/ns-pos-loading-popup.vue";
 import { nsAlertPopup, nsConfirmPopup, nsPromptPopup } from "./components/components";
+import nsPosShippingPopupVue from '~/popups/ns-pos-shipping-popup.vue';
 
 
 /**
@@ -238,8 +239,8 @@ export class POS {
             {
                 identifier: 'handle.delivery-order',
                 promise: (selectedType: OrderType) => new Promise<StatusResponse>((resolve, reject) => {
-                    if ( selectedType && selectedType.identifier === 'delivery') {
-                        return Popup.show(nsPosShippingPopup, { resolve, reject });
+                    if ( selectedType && (selectedType.identifier === 'delivery' || selectedType.identifier === 'ubereats' || selectedType.identifier === 'pickmefoods')) {
+                        return Popup.show(nsPosShippingPopupVue, { resolve, reject });
                     }
 
                     return resolve({

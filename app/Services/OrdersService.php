@@ -2469,9 +2469,9 @@ class OrdersService
                 'icon' => '/images/dine-in.png',
                 'selected' => false,
             ],
-            'pickmefood' => [
-                'identifier' => 'pickmefood',
-                'label' => __( 'Pick Me Food' ),
+            'pickmefoods' => [
+                'identifier' => 'pickmefoods',
+                'label' => __( 'Pick Me Foods' ),
                 'icon' => '/images/pickmefoods.png',
                 'selected' => false,
             ],
