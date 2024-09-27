@@ -46,10 +46,12 @@ use App\Classes\Hook;
                         <td colspan="2" class="p-2 border-b border-gray-800 text-sm font-semibold">{{ __( 'Sub Total' ) }}</td>
                         <td class="p-2 border-b border-gray-800 text-sm text-right">{{ ns()->currency->define( $order->subtotal ) }}</td>
                     </tr>
-                    <tr>
-                        <td colspan="2" class="p-2 border-b border-gray-800 text-sm font-semibold">{{ __( 'Service Charge' ) }}</td>
-                        <td class="p-2 border-b border-gray-800 text-sm text-right">{{ ns()->currency->define( $order->service_charge ) }}</td>
-                    </tr>
+					@if($order->service_charge > 0)
+						<tr>
+							<td colspan="2" class="p-2 border-b border-gray-800 text-sm font-semibold">{{ __( 'Service Charge' ) }}</td>
+							<td class="p-2 border-b border-gray-800 text-sm text-right">{{ ns()->currency->define( $order->service_charge ) }}</td>
+						</tr>
+					@endif
                     @if ( $order->discount > 0 )
                     <tr>
                         <td colspan="2" class="p-2 border-b border-gray-800 text-sm font-semibold">
