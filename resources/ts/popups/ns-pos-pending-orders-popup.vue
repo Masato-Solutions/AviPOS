@@ -8,11 +8,21 @@
         </div>
         <div class="p-2 flex overflow-hidden flex-auto ns-box-body">
             <ns-tabs :active="active" @changeTab="setActiveTab( $event )">
+                <ns-tabs-item identifier="ns.kot-orders" :label="__( 'KOT Orders' )" padding="p-0" class="flex flex-col overflow-hidden">
+                    <ns-pos-pending-orders :orders="orders" 
+                        @searchOrder="searchOrder( $event )"
+                        @previewOrder="previewOrder( $event )"
+                        @printOrder="printOrder( $event )"
+                        @kotOrder="kotOrder( $event )"
+                        @proceedOpenOrder="proceedOpenOrder( $event )">
+                    </ns-pos-pending-orders>
+                </ns-tabs-item>
                 <ns-tabs-item identifier="ns.hold-orders" :label="__( 'On Hold' )" padding="p-0" class="flex flex-col overflow-hidden">
                     <ns-pos-pending-orders :orders="orders" 
                         @searchOrder="searchOrder( $event )"
                         @previewOrder="previewOrder( $event )"
                         @printOrder="printOrder( $event )"
+                        @kotOrder="kotOrder( $event )"
                         @proceedOpenOrder="proceedOpenOrder( $event )">
                     </ns-pos-pending-orders>
                 </ns-tabs-item>
@@ -21,6 +31,7 @@
                         @searchOrder="searchOrder( $event )"
                         @previewOrder="previewOrder( $event )"
                         @printOrder="printOrder( $event )"
+                        @kotOrder="kotOrder( $event )"
                         @proceedOpenOrder="proceedOpenOrder( $event )">
                     </ns-pos-pending-orders>
                 </ns-tabs-item>
@@ -29,6 +40,7 @@
                         @searchOrder="searchOrder( $event )"
                         @previewOrder="previewOrder( $event )"
                         @printOrder="printOrder( $event )"
+                        @kotOrder="kotOrder( $event )"
                         @proceedOpenOrder="proceedOpenOrder( $event )">
                     </ns-pos-pending-orders>
                 </ns-tabs-item>
@@ -97,6 +109,9 @@ export default {
         printOrder( order ) {
             POS.print.process( order.id, 'sale' );
         },
+        kotOrder( order ) {
+            POS.print.process( order.id, 'kot' );
+        },
         proceedOpenOrder( order ) {
             const products  =   POS.products.getValue();
 
@@ -117,7 +132,7 @@ export default {
     },
     data() {
         return {
-            active: 'ns.hold-orders',
+            active: 'ns.kot-orders',
             searchField: '',
             orders: [],
         }

@@ -24,8 +24,8 @@ export default {
     methods: {
         __,
         async kotOrder() {
-			if ( this.order.payment_status !== 'hold' && this.order.payments.length > 0 ) {
-                return nsSnackBar.error( __( 'Unable to hold an order which payment status has been updated already.' ) ).subscribe();
+			if ( this.order.payment_status !== 'kot' && this.order.payments.length > 0 ) {
+                return nsSnackBar.error( __( 'Unable to kot an order which kot status has been updated already.' ) ).subscribe();
             }
 
 			const queues    =   nsHooks.applyFilters( 'ns-kot-queue', [
@@ -57,12 +57,12 @@ export default {
                     //Popup.show( nsPosHoldOrdersPopupVue, { resolve, reject, order : this.order });
 					
 					console.log("KOT.order")
-					resolve({ title: 'KOT Order' });
+					resolve({ title: 'kot' });
                 });
 
                 promise.then( result => {
-                    this.order.title            =   "KOT Order";
-                    this.order.payment_status   =   'hold';
+                    this.order.title            =   "kot";
+                    this.order.payment_status   =   'kot';
                     POS.order.next( this.order );
 					//POS.printOrderReceipt( this.order, 'silent' );
 					console.log("this.order", this.order)

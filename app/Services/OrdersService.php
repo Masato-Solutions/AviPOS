@@ -182,6 +182,7 @@ class OrdersService
             Order::PAYMENT_PAID,
             Order::PAYMENT_PARTIALLY,
             Order::PAYMENT_UNPAID,
+			Order::PAYMENT_KOT,
         ] ) ) {
             $this->__saveOrderPayments( $order, $payments, $customer );
         }
@@ -1010,7 +1011,9 @@ class OrdersService
         } elseif ( $totalPayments < $total && $totalPayments > 0 ) {
             $paymentStatus = Order::PAYMENT_PARTIALLY;
         } elseif ( $totalPayments === 0 && ( ! isset( $fields[ 'payment_status' ] ) || ( $fields[ 'payment_status' ] !== Order::PAYMENT_HOLD ) ) ) {
-            $paymentStatus = Order::PAYMENT_UNPAID;
+            $paymentStatus = Order::PAYMENT_UNPAID;		
+        } elseif ( $totalPayments === 0 && ( ! isset( $fields[ 'payment_status' ] ) || ( $fields[ 'payment_status' ] !== Order::PAYMENT_KOT ) ) ) {
+			$paymentStatus = Order::PAYMENT_KOT;
         } elseif ( $totalPayments === 0 && ( isset( $fields[ 'payment_status' ] ) && ( $fields[ 'payment_status' ] === Order::PAYMENT_HOLD ) ) ) {
             $paymentStatus = Order::PAYMENT_HOLD;
         }
@@ -1573,6 +1576,7 @@ class OrdersService
         $order->tax_type = $fields['tax_type' ] ?? null;
         $order->total_coupons = $fields['total_coupons'] ?? 0;
         $order->payment_status = $paymentStatus;
+		$order->kot_print_count = $fields['kot_print_count'] ?? 0;
         $order->delivery_status = 'pending';
         $order->process_status = 'pending';
         $order->support_instalments = $fields[ 'support_instalments' ] ?? true; // by default instalments are supported

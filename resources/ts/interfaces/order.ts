@@ -12,7 +12,8 @@ export interface Order {
     register_id: number | undefined;
     total: number;
     tendered: number;
-    payment_status: 'hold' | 'paid' | 'unpaid' | 'partially_paid' | 'layaway';
+    payment_status: 'hold' | 'kot' | 'paid' | 'unpaid' | 'partially_paid' | 'layaway';
+	kot_print_count: number;
     change: number;
     total_products: number;
     customer: Customer | undefined;

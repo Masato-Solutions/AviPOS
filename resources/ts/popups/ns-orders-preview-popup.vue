@@ -58,6 +58,9 @@ export default {
         printOrder() {
             this.print.process( this.order.id, 'sale' );
         },
+        kotOrder() {
+            this.print.process( this.order.id, 'kot' );
+        },
         refresh() {
             /**
              * Withn the popup let's refresh the order

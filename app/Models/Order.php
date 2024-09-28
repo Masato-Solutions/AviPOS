@@ -76,6 +76,8 @@ class Order extends NsModel
 
     const PAYMENT_HOLD = 'hold';
 
+    const PAYMENT_KOT = 'kot';
+
     const PAYMENT_VOID = 'order_void';
 
     const PAYMENT_REFUNDED = 'refunded';
@@ -199,6 +201,11 @@ class Order extends NsModel
     public function scopePaid( $query )
     {
         return $query->where( 'payment_status', self::PAYMENT_PAID );
+    }
+
+    public function scopeKot( $query )
+    {
+        return $query->where( 'payment_status', self::PAYMENT_KOT );
     }
 
     public function scopeRefunded( $query )

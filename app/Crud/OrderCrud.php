@@ -149,6 +149,7 @@ class OrderCrud extends CrudService
                     Order::PAYMENT_PAID => __( 'Paid' ),
                     Order::PAYMENT_HOLD => __( 'Hold' ),
                     Order::PAYMENT_PARTIALLY => __( 'Partially Paid' ),
+					Order::PAYMENT_KOT => __( 'KOT' ),
                     Order::PAYMENT_PARTIALLY_REFUNDED => __( 'Partially Refunded' ),
                     Order::PAYMENT_REFUNDED => __( 'Refunded' ),
                     Order::PAYMENT_UNPAID => __( 'Unpaid' ),
@@ -360,6 +361,7 @@ class OrderCrud extends CrudService
     {
         $entry->{ '$cssClass' } = match ( $entry->__raw->payment_status ) {
             Order::PAYMENT_PAID => 'success border text-sm',
+            Order::PAYMENT_KOT => 'success border text-sm',
             Order::PAYMENT_UNPAID => 'danger border text-sm',
             Order::PAYMENT_PARTIALLY => 'info border text-sm',
             Order::PAYMENT_HOLD => 'danger border text-sm',

@@ -107,6 +107,7 @@ export default {
                 case 'partially_paid': return __( 'Partially Paid' ); break;
                 case 'unpaid': return __( 'Unpaid' ); break;
                 case 'hold': return __( 'Hold' ); break;
+                case 'kot': return __( 'Kot' ); break;
                 case 'order_void': return __( 'Void' ); break;
                 case 'refunded': return __( 'Refunded' ); break;
                 case 'partially_refunded': return __( 'Partially Refunded' ); break;

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::table('nexopos_orders', function (Blueprint $table) {
             //
 			$table->float('service_charge', 18, 5)->after('total_coupons')->default(0);
+			//add kot_print_count
+			$table->integer('kot_print_count')->after('delivery_status')->default(0);
         });
     }
 
@@ -25,6 +27,7 @@ return new class extends Migration
         Schema::table('nexopos_orders', function (Blueprint $table) {
             //
 			$table->dropColumn('service_charge');
+			$table->dropColumn('kot_print_count');
         });
     }
 };

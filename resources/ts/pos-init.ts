@@ -94,6 +94,7 @@ export class POS {
             taxes: [],
             tax_groups: [],
             payment_status: undefined,
+			kot_print_count: 0,
             customer_id: undefined,
             change: 0,
             total_products: 0,
@@ -845,7 +846,10 @@ export class POS {
              * this verification applies only if the 
              * order is not "hold".
              */
-            if (order.payment_status !== 'hold') {
+            if (order.payment_status == 'hold') {
+			}else if (order.title == 'kot') {
+				order.kot_print_count = order.kot_print_count + 1;
+			}else{
                 if (order.payments.length === 0 && order.total > 0 && order.total > order.tendered) {
                     if (this.options.getValue().ns_orders_allow_partial === 'no') {
                         const message = __('Partially paid orders are disabled.');
@@ -1145,6 +1149,8 @@ export class POS {
             ( options.ns_pos_printing_enabled_for === 'partially_paid_orders' && [ 'paid', 'partially_paid' ].includes( order.payment_status ) ) ||
             ( options.ns_pos_printing_enabled_for === 'only_paid_orders' && [ 'paid' ].includes( order.payment_status ) )
         ) {
+			order.kot_print_count = order.kot_print_count + 1;
+			
             this.print.process( order.id, 'kot', mode );
         } else {
             return false;
