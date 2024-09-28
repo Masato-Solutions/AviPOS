@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\View;
     <div class="w-full md:w-1/2 lg:w-1/3 shadow-lg bg-white p-2 mx-auto">
         <div class="flex items-center justify-center">
             @if ( empty( ns()->option->get( 'ns_invoice_receipt_logo' ) ) )
-            <h4 class="text-3xl font-bold">KOT Ticket</h4>
+            <h4 class="text-2xl font-bold">KOT Ticket</h4>
             @else
-            <h4 class="text-3xl font-bold">KOT Ticket</h4>
+            <h4 class="text-2xl font-bold">KOT Ticket</h4>
             @endif
         </div>
         <div class="p-2 border-b border-gray-700">	
