@@ -37,6 +37,7 @@ const systemOptions       =   <?php echo json_encode([
 const systemUrls      =  <?php echo json_encode([
     'refund_printing_url'   =>  ns()->url( '/dashboard/orders/refund-receipt/{reference_id}?autoprint=true&dash-visibility=disabled' ),
     'sale_printing_url'     =>  ns()->url( '/dashboard/orders/receipt/{reference_id}?autoprint=true&dash-visibility=disabled' ),
+	'kot_printing_url'      =>  ns()->url( '/dashboard/orders/kot/{reference_id}?dash-visibility=disabled&autoprint=true' ),
     'payment_printing_url'  =>  ns()->url( '/dashboard/orders/receipt/{reference_id}?autoprint=true&dash-visibility=disabled' ),
     'z_report_printing_url' =>  ns()->url( '/dashboard/cash-registers/z-report/{reference_id}?autoprint=true&dash-visibility=disabled' ),
 ]);?>

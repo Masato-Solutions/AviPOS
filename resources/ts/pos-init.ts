@@ -1129,6 +1129,27 @@ export class POS {
         }
     }
 
+    printKotReceipt( order, mode ) {
+        const options = this.options.getValue();
+
+        if (options.ns_pos_printing_enabled_for === 'disabled') {
+            return false;
+        }
+
+        /**
+         * There should be a better
+         * way of writing this.
+         */
+        if ( 
+            ( options.ns_pos_printing_enabled_for === 'all_orders'  ) ||
+            ( options.ns_pos_printing_enabled_for === 'partially_paid_orders' && [ 'paid', 'partially_paid' ].includes( order.payment_status ) ) ||
+            ( options.ns_pos_printing_enabled_for === 'only_paid_orders' && [ 'paid' ].includes( order.payment_status ) )
+        ) {
+            this.print.process( order.id, 'kot', mode );
+        } else {
+            return false;
+        }
+    }
 
     computePaid() {
         const order = this._order.getValue();

@@ -208,6 +208,7 @@ class OrdersController extends DashboardController
             ] ),
             'urls' => [
                 'sale_printing_url' => Hook::filter( 'ns-pos-printing-url', ns()->url( '/dashboard/orders/receipt/{id}?dash-visibility=disabled&autoprint=true' ) ),
+                'kot_printing_url' => Hook::filter( 'ns-pos-printing-url', ns()->url( '/dashboard/orders/kot/{id}?dash-visibility=disabled&autoprint=true' ) ),
                 'orders_url' => ns()->route( 'ns.dashboard.orders' ),
                 'dashboard_url' => ns()->route( 'ns.dashboard.home' ),
                 'categories_url' => ns()->route( 'ns.dashboard.products.categories.create' ),
@@ -269,6 +270,25 @@ class OrdersController extends DashboardController
         return View::make( 'pages.dashboard.orders.templates.receipt', [
             'order' => $order,
             'title' => sprintf( __( 'Order Receipt &mdash; %s' ), $order->code ),
+            'optionsService' => $this->optionsService,
+            'ordersService' => $this->ordersService,
+            'paymentTypes' => collect( $this->paymentTypes )->mapWithKeys( function ( $payment ) {
+                return [ $payment[ 'identifier' ] => $payment[ 'label' ] ];
+            } ),
+        ] );
+    }
+
+    public function kotReceipt( Order $order )
+    {
+        $order->load( 'customer' );
+        $order->load( 'products' );
+        $order->load( 'shipping_address' );
+        $order->load( 'billing_address' );
+        $order->load( 'user' );
+
+        return View::make( 'pages.dashboard.orders.templates.kot', [
+            'order' => $order,
+            'title' => sprintf( __( 'KOT Receipt &mdash; %s' ), $order->code ),
             'optionsService' => $this->optionsService,
             'ordersService' => $this->ordersService,
             'paymentTypes' => collect( $this->paymentTypes )->mapWithKeys( function ( $payment ) {

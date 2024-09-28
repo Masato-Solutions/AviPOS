@@ -8,6 +8,7 @@ export default class Print {
     private printingURL     =   {
         'refund'    :   'refund_printing_url',
         'sale'      :   'sale_printing_url',
+        'kot'       :   'kot_printing_url',
         'payment'   :   'payment_printing_url',
         'z-report'  :   'z_report_printing_url',
     }
@@ -28,9 +29,11 @@ export default class Print {
             item.remove();
         }
 
-        console.log({ documentType })
+        console.log("documentType", { documentType })
+        console.log("D", this.urls[ this.printingURL[ documentType ] ])
 
         const url               =   this.urls[ this.printingURL[ documentType ] ].replace( '{reference_id}', reference_id );
+        console.log("url", url)
         const printSection      =   document.createElement( 'iframe' );
 
         printSection.id         =   'printing-section';

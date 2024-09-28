@@ -267,6 +267,7 @@ import switchTo from "~/libraries/pos-section-switch";
 import { ProductQuantityPromise } from "./queues/products/product-quantity";
 
 import nsPosPayButton from '~/pages/dashboard/pos/cart-buttons/ns-pos-pay-button.vue';
+import nsPosKotButton from '~/pages/dashboard/pos/cart-buttons/ns-pos-kot-button.vue';
 import nsPosHoldButton from '~/pages/dashboard/pos/cart-buttons/ns-pos-hold-button.vue';
 import nsPosDiscountButton from '~/pages/dashboard/pos/cart-buttons/ns-pos-discount-button.vue';
 import nsPosVoidButton from '~/pages/dashboard/pos/cart-buttons/ns-pos-void-button.vue';
@@ -298,6 +299,7 @@ export default {
             products: [],
             defaultCartButtons: {
                 nsPosPayButton: markRaw( nsPosPayButton ),
+				nsPosKotButton: markRaw( nsPosKotButton ),
                 nsPosHoldButton: markRaw( nsPosHoldButton ),
                 nsPosDiscountButton: markRaw( nsPosDiscountButton ),
                 nsPosVoidButton: markRaw( nsPosVoidButton ),

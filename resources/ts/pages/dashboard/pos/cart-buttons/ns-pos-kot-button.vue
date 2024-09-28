@@ -1,10 +1,9 @@
 <template>
-    <div @click="holdOrder()" id="hold-button" class="flex-shrink-0 w-1/5 flex items-center font-bold cursor-pointer justify-center bg-blue-500 text-white border-r hover:bg-blue-600 border-blue-600 flex-auto">
-        <i class="mr-2 text-2xl lg:text-xl las la-pause"></i> 
-        <span class="text-lg hidden md:inline lg:text-2xl">{{ __( 'Hold' ) }}</span>
+    <div @click="kotOrder()" id="kot-button" class="flex-shrink-0 w-1/5 flex items-center font-bold cursor-pointer justify-center bg-orange-500 text-white hover:bg-orange-600 border-r border-orange-600 flex-auto">
+        <i class="mr-2 text-2xl lg:text-xl las la-cash-register"></i> 
+        <span class="text-lg hidden md:inline lg:text-2xl">{{ __( 'Kot' ) }}</span>
     </div>
 </template>
-
 <script lang="ts">
 import nsPosHoldOrdersPopupVue from '~/popups/ns-pos-hold-orders-popup.vue';
 import nsPosLoadingPopupVue from "~/popups/ns-pos-loading-popup.vue";
@@ -20,61 +19,69 @@ declare const nsShortcuts;
 declare const __;
 declare const POS;
 
-
 export default {
     props: [ 'order' ],
     methods: {
         __,
-        async holdOrder() {
-            if ( this.order.payment_status !== 'hold' && this.order.payments.length > 0 ) {
+        async kotOrder() {
+			if ( this.order.payment_status !== 'hold' && this.order.payments.length > 0 ) {
                 return nsSnackBar.error( __( 'Unable to hold an order which payment status has been updated already.' ) ).subscribe();
             }
 
-            const queues    =   nsHooks.applyFilters( 'ns-hold-queue', [
-                ProductsQueue,
-                CustomerQueue,
-                TypeQueue,
-            ]);
+			const queues    =   nsHooks.applyFilters( 'ns-kot-queue', [
+				ProductsQueue,
+				CustomerQueue,
+				TypeQueue,
+			]);
 
-            for( let index in queues ) {
-                try {
-                    const promise   =   new queues[ index ]( this.order );
-                    const response  =   await promise.run();
-                } catch( exception ) {
-                    /**
-                     * in case there is something broken
-                     * on the promise, we just stop the queue.
-                     */
-                    return false;    
-                }
-            }
+			for( let index in queues ) {
+				try {
+					const promise   =   new queues[ index ]( this.order );
+					const response  =   await promise.run();
+				} catch( exception ) {
+					/**
+					 * in case there is something broken
+					 * on the promise, we just stop the queue.
+					 */
+					return false;    
+				}
+			}
 
-            /**
+			/**
              * overriding hold popup
              * This will be useful to inject custom 
              * hold popup.
              */
-            const popup     =   nsHooks.applyFilters( 'ns-override-hold-popup', () => {
+			 const popup     =   nsHooks.applyFilters( 'ns-override-kot-popup', () => {
                 const promise   =   new Promise( ( resolve, reject ) => {
-                    Popup.show( nsPosHoldOrdersPopupVue, { resolve, reject, order : this.order });
+                    //Popup.show( nsPosHoldOrdersPopupVue, { resolve, reject, order : this.order });
+					
+					console.log("KOT.order")
+					resolve({ title: 'KOT Order' });
                 });
 
                 promise.then( result => {
-                    this.order.title            =   result.title;
+                    this.order.title            =   "KOT Order";
                     this.order.payment_status   =   'hold';
                     POS.order.next( this.order );
+					//POS.printOrderReceipt( this.order, 'silent' );
+					console.log("this.order", this.order)
 
                     const popup     =   Popup.show( nsPosLoadingPopupVue );
                     
                     POS.submitOrder().then( result => {
-						POS.printKotReceipt( result.order.id, 'silent' );
-                        popup.close();
+						console.log("this.submitOrder", result)
+						POS.printKotReceipt( result.data.order, 'silent' );
+						//POS.printKotReceipt( result.order, 'silent' );
+						console.log("result", result)
                         // @todo add a print snipped here
                         nsSnackBar.success( result.message ).subscribe();
-                    }, ( error ) => {
                         popup.close();
+                    }, ( error ) => {
+						console.log(result.message)
                         // @todo add a print snipped here
                         nsSnackBar.error( error.message ).subscribe();
+                        popup.close();
                     });
                 }).catch( exception => {
                     console.log( exception );
@@ -89,26 +96,21 @@ export default {
          * let's register hotkeys
          */
          for( let shortcut in nsShortcuts ) {
-            /**
-             * let's declare only shortcuts that
-             * works on the pos grid and that doesn't 
-             * expect any popup to be visible
-             */
             if ([ 
-                    'ns_pos_keyboard_hold_order', 
+                    'ns_pos_keyboard_payment', 
                 ].includes( shortcut ) ) {
                 nsHotPress
-                    .create( 'ns_pos_keyboard_hold_order' )
+                    .create( 'ns_pos_keyboard_payment' )
                     .whenNotVisible([ '.is-popup' ])
                     .whenPressed( nsShortcuts[ shortcut ] !== null ? nsShortcuts[ shortcut ].join( '+' ) : null, ( event ) => {
                         event.preventDefault();
-                        this.holdOrder();
+                        this.payOrder();
                 });
             }
         }
     },
     unmounted() {
-        nsHotPress.destroy( 'ns_pos_keyboard_hold_order' );
+        nsHotPress.destroy( 'ns_pos_keyboard_payment' );
     }
 }
 </script>
